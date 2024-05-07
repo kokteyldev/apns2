@@ -47,6 +47,8 @@ type aps struct {
 	Event             string                 `json:"event,omitempty"`
 	Timestamp         int64                  `json:"timestamp,omitempty"`
 	ContentState      map[string]interface{} `json:"content-state,omitempty"`
+	AttributesType    string                 `json:"attributes-type,omitempty"`
+	Attributes        map[string]interface{} `json:"attributes,omitempty"`
 }
 
 type alert struct {
@@ -432,6 +434,24 @@ func (p *Payload) Timestamp(value int64) *Payload {
 // {"aps":{"content-state":{"product_id": 123456, "product_name": "nameTest", "product_quantity": 4, "delivery_time": 34}}}
 func (p *Payload) ContentState(content map[string]interface{}) *Payload {
 	p.aps().ContentState = content
+	return p
+}
+
+// SetAttributesType sets the aps attributes-type field on the payload.
+// This is used for push-to-start live activities
+//
+//	{"aps":{"attributes-type": attributesType }}`
+func (p *Payload) SetAttributesType(attributesType string) *Payload {
+	p.aps().AttributesType = attributesType
+	return p
+}
+
+// SetAttributes sets the aps attributes field on the payload.
+// This is used for push-to-start live activities
+//
+//	{"aps":{"attributes": attributes }}`
+func (p *Payload) SetAttributes(attributes map[string]interface{}) *Payload {
+	p.aps().Attributes = attributes
 	return p
 }
 
