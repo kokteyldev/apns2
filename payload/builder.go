@@ -35,7 +35,7 @@ const (
 	// LiveActivityEventEnd is used to end an live activity.
 	LiveActivityEventEnd ELiveActivityEvent = "end"
 
-	// LiveActivityEventEnd is used to end an live activity.
+	// LiveActivityEventEnd is used to start an live activity.
 	LiveActivityEventStart ELiveActivityEvent = "start"
 )
 
