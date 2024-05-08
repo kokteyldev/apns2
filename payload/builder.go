@@ -25,6 +25,20 @@ const (
 
 type D map[string]interface{}
 
+// LiveActivityEvent defines the value for the payload aps event
+type ELiveActivityEvent string
+
+const (
+	// LiveActivityEventUpdate is used to update an live activity.
+	LiveActivityEventUpdate ELiveActivityEvent = "update"
+
+	// LiveActivityEventEnd is used to end an live activity.
+	LiveActivityEventEnd ELiveActivityEvent = "end"
+
+	// LiveActivityEventEnd is used to end an live activity.
+	LiveActivityEventStart ELiveActivityEvent = "start"
+)
+
 // Payload represents a notification which holds the content that will be
 // marshalled as JSON.
 type Payload struct {
@@ -44,7 +58,7 @@ type aps struct {
 	URLArgs           []string               `json:"url-args,omitempty"`
 	StaleDate         int64                  `json:"stale-date,omitempty"`
 	DismissalDate     int64                  `json:"dismissal-date,omitempty"`
-	Event             string                 `json:"event,omitempty"`
+	Event             ELiveActivityEvent     `json:"event,omitempty"`
 	Timestamp         int64                  `json:"timestamp,omitempty"`
 	ContentState      map[string]interface{} `json:"content-state,omitempty"`
 	AttributesType    string                 `json:"attributes-type,omitempty"`
@@ -412,7 +426,7 @@ func (p *Payload) DismissalDate(dismissalDate int64) *Payload {
 // ref: https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification
 //
 // {"aps":{"event":"update"}}
-func (p *Payload) Event(event string) *Payload {
+func (p *Payload) Event(event ELiveActivityEvent) *Payload {
 	p.aps().Event = event
 	return p
 }
