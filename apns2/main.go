@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
+	"github.com/alecthomas/kingpin/v2"
 	"github.com/kokteyldev/apns2"
 	"github.com/kokteyldev/apns2/certificate"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (

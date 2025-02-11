@@ -2,7 +2,7 @@
 // builder to make constructing notification payloads easier.
 package payload
 
-import "encoding/json"
+import "github.com/goccy/go-json"
 
 // InterruptionLevel defines the value for the payload aps interruption-level
 type EInterruptionLevel string
